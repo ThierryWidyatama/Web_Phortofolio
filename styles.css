@@ -251,7 +251,69 @@ nav ul li a:hover::after {
     height: 100%;
 }
 
-/* Styles untuk popup */
+/* Styles untuk carousel */
+/* =============== [PC Version] =============== */
+.carousel {
+    position: relative;
+    width: 800px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.carousel h3 {
+    color: black;
+    font-size: 24px; /* Ukuran lebih besar untuk PC */
+    margin-bottom: 20px;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    padding: 50px 0;
+}
+
+.carousel-inner img {
+    flex: 0 0 calc(50% - 100px);
+    margin: 0 10px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.carousel-inner img.active {
+    transform: scale(1.15);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.carousel-controls button {
+    background: rgba(255,255,255,0.8);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 999; /* Pastikan tombol selalu muncul di atas */
+}
+
+/* Tambahkan hover effects */
+.carousel-controls button:hover {
+    background: white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Styles untuk popup coursel*/
 .popup {
     display: none;
     position: fixed;
@@ -279,65 +341,6 @@ nav ul li a:hover::after {
     right: 20px;
     font-size: 40px;
     cursor: pointer;
-}
-
-/* Styles untuk carousel */
-.carousel {
-    position: relative;
-    width: 800px;
-    max-width: 100%;
-    overflow: hidden;
-}
-.carousel h3{
-    color: black;
-}
-
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    padding: 50px 0;
-}
-
-.carousel-inner img {
-    flex: 0 0 calc(33.33% - 20px);
-    margin: 0 10px;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    object-fit: cover;
-    height: 300px;
-}
-
-.carousel-inner img.active {
-    transform: scale(1.15);
-    z-index: 2;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.carousel-controls {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-}
-
-.carousel-controls button {
-    background: rgba(255,255,255,0.8);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Tambahkan hover effects */
-.carousel-controls button:hover {
-    background: white;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
 
 /*------------------------contact------------------*/
@@ -483,3 +486,94 @@ footer{
         display: none;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .carousel {
+        padding: 0 20px;
+    }
+    .carousel h3 {
+        font-size: 18px; /* Ukuran lebih kecil untuk mobile */
+        margin-bottom: 15px;
+    }
+    
+    .carousel-inner {
+        padding: 30px 10px;
+        justify-content: flex-start; /* Diubah dari default flex */
+        scroll-padding: 0 20px; /* Untuk snap position */
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .carousel-inner img {
+        flex: 0 0 90%; /* Lebar gambar diperbesar */
+        margin: 0 5%; /* Margin diperkecil */
+        height: 100px;
+        transform: translateX(0); /* Reset transform */
+        scroll-snap-align: center;
+        box-sizing: border-box; /* Pastikan padding tidak mempengaruhi lebar */
+        padding: 0 10px; /* Tambahkan spacing antara gambar */
+    }
+    
+    .carousel-controls {
+        padding: 0 5px;
+    }
+    
+    .carousel-controls .prev-btn,
+    .carousel-controls .next-btn {
+        display: none !important; /* Pastikan tombol hidden di mobile */
+    }
+    
+    /* Sisakan style lainnya yang sudah ada */
+    .carousel-inner {
+        padding: 30px 0;
+    }
+    
+    .carousel-inner img {
+        flex: 0 0 85%;
+        margin: 0 7.5%;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .carousel h3 {
+        font-size: 16px;
+    }
+    
+    .carousel-inner img {
+        height: 180px;
+        flex: 0 0 90%;
+        margin: 0 5%;
+    }
+    
+    .carousel-controls button {
+        padding: 8px 12px;
+        font-size: 18px;
+    }
+    
+    .popup-content {
+        padding: 20px;
+    }
+    
+    .close-btn {
+        font-size: 32px;
+        right: 15px;
+    }
+
+    .layer{
+        font-size: 10px;
+    }
+
+    .layer a{
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
+        line-height: 37px;
+    }
+
+    .footer p{
+        font-weight: 10px;
+    }
+}
+
